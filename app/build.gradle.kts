@@ -51,7 +51,10 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     //hin add firebase
-    implementation(platform("com.google.firebase:firebase-bom:33.5.1"))
-    implementation("com.google.firebase:firebase-database:21.0.0")
-    implementation("com.google.firebase:firebase-firestore:25.1.1")
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.database)
+    implementation(libs.firebase.firestore)
+    //hin add picasso
+    implementation (libs.picasso)
+
 }
