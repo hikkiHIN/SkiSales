@@ -1,6 +1,7 @@
 package com.example.skisales
 
 import android.content.ContentValues.TAG
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
@@ -64,7 +65,12 @@ class MainActivity : AppCompatActivity() {
                     imageView.adjustViewBounds = true
                     imageView.setLayoutParams(params)
                     imageView.setOnClickListener(){
-
+                        val intent = Intent(
+                            applicationContext,
+                            MainActivity2::class.java
+                        )
+                        intent.putExtra("inv_id", "${document.id}")
+                        startActivity(intent)
                     }
                     layout_path_img.addView(imageView)
                     val textView = TextView(this)
