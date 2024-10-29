@@ -3,6 +3,7 @@ package com.example.skisales
 import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -50,6 +51,11 @@ class MainActivity2 : AppCompatActivity() {
                 .addOnFailureListener { exception ->
                     Log.d(TAG, "get failed with ", exception)
                 }
+        }
+
+        val fab: View = findViewById(R.id.floatingActionButton)
+        fab.setOnClickListener { view ->
+
         }
 
 
