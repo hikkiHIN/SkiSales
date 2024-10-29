@@ -12,6 +12,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.material3.Button
@@ -94,7 +95,7 @@ class MainActivity3 : AppCompatActivity() {
                 val user_weight = findViewById(R.id.editTextNumber2) as EditText
                 val order = hashMapOf(
                     "order_skis" to "${inv_id}",
-                    "order_user_weight" to user_weight.text.toString(),
+                    "order_user_weight" to user_weight.text.toString().toFloat(),
                     "order_core" to spinner_core,
                     "order_notch_system" to spinner_notch_system,
                     "order_rigidity" to spinner_rigidity,
@@ -105,9 +106,11 @@ class MainActivity3 : AppCompatActivity() {
                 .add(order)
                 .addOnSuccessListener { documentReference ->
                     Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+                    Toast.makeText(applicationContext, "Заказ успешно отправлен!", Toast.LENGTH_LONG).show()
                 }
                 .addOnFailureListener { e ->
                     Log.w(TAG, "Error adding document", e)
+                    Toast.makeText(applicationContext, "Произошла ошибка, пожалуйста повторите попытку.", Toast.LENGTH_LONG).show()
                 }
             }
 

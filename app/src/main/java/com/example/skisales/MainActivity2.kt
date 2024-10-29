@@ -36,6 +36,7 @@ class MainActivity2 : AppCompatActivity() {
         val imageView = findViewById(R.id.imageView) as ImageView
         val textView_name = findViewById(R.id.textView) as TextView
         val textView_disc = findViewById(R.id.textView2) as TextView
+        val textView_price = findViewById(R.id.textView_price) as TextView
         if(inv_id != null) {
             val docRef = db.collection("inv").document(inv_id)
             docRef.get()
@@ -45,6 +46,7 @@ class MainActivity2 : AppCompatActivity() {
                         Picasso.get().load("${document.data?.get("img")}").into(imageView)
                         textView_name.text = "${document.data?.get("name")}"
                         textView_disc.text = "${document.data?.get("description")}"
+                        textView_price.text = "Цена: ${document.data?.get("price")}Р"
                     } else {
                         Log.d(TAG, "No such document")
                     }
