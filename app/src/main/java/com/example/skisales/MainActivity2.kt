@@ -1,6 +1,7 @@
 package com.example.skisales
 
 import android.content.ContentValues.TAG
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -53,9 +54,15 @@ class MainActivity2 : AppCompatActivity() {
                 }
         }
 
+
         val fab: View = findViewById(R.id.floatingActionButton)
         fab.setOnClickListener { view ->
-
+            val intent = Intent(
+                applicationContext,
+                MainActivity3::class.java
+            )
+            intent.putExtra("inv_id", "${inv_id}")
+            startActivity(intent)
         }
 
 
