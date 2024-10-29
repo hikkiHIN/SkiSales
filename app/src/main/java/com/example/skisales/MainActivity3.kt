@@ -4,16 +4,21 @@ import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.material3.Button
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.Firebase
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.firestore
 import com.squareup.picasso.Picasso
 
@@ -35,6 +40,7 @@ class MainActivity3 : AppCompatActivity() {
             inv_id = extras.getString("inv_id").toString()
         }
         Log.d(TAG, "inv_id = ${inv_id}")
+
 
         val spinner: Spinner = findViewById(R.id.spinner)
         ArrayAdapter.createFromResource(
@@ -76,6 +82,35 @@ class MainActivity3 : AppCompatActivity() {
             spinner3.adapter = adapter
         }
 
+
+
+        val take_order = findViewById<Button>(R.id.button2)
+        take_order.setOnClickListener {
+                Log.d("BUTTONS", "User tapped the Supabutton")
+                val spinner_core = spinner.selectedItem.toString()
+                val spinner_rigidity = spinner1.selectedItem.toString()
+                val spinner_notch_system = spinner3.selectedItem.toString()
+                val spinner_sliding_surface = spinner2.selectedItem.toString()
+                val user_weight = findViewById(R.id.editTextNumber2) as EditText
+                val order = hashMapOf(
+                    "order_skis" to "${inv_id}",
+                    "order_user_weight" to user_weight.text.toString(),
+                    "order_core" to spinner_core,
+                    "order_notch_system" to spinner_notch_system,
+                    "order_rigidity" to spinner_rigidity,
+                    "order_sliding_surface" to spinner_sliding_surface,
+                )
+            // Add a new document with a generated ID
+            db.collection("orders")
+                .add(order)
+                .addOnSuccessListener { documentReference ->
+                    Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+                }
+                .addOnFailureListener { e ->
+                    Log.w(TAG, "Error adding document", e)
+                }
+            }
+
         val docRef = db.collection("options").document("XilNQyhVIacHBp3SV1pw")
         docRef.get()
             .addOnSuccessListener { document ->
@@ -97,7 +132,10 @@ class MainActivity3 : AppCompatActivity() {
                 Log.d(TAG, "get failed with ", exception)
             }
 
+
+
     }
+
 
 
 }
