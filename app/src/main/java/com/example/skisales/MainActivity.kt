@@ -63,6 +63,9 @@ class MainActivity : AppCompatActivity() {
                     Picasso.get().load("${document.data.get("img")}").into(imageView)
                     imageView.adjustViewBounds = true
                     imageView.setLayoutParams(params)
+                    imageView.setOnClickListener(){
+
+                    }
                     layout_path_img.addView(imageView)
                     val textView = TextView(this)
                     textView.text = "${document.data.get("name")}"
