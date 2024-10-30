@@ -34,6 +34,7 @@ class MainActivity2 : AppCompatActivity() {
 
         val db = Firebase.firestore
         val imageView = findViewById(R.id.imageView) as ImageView
+
         val textView_name = findViewById(R.id.textView) as TextView
         val textView_disc = findViewById(R.id.textView2) as TextView
         val textView_price = findViewById(R.id.textView_price) as TextView
@@ -43,7 +44,7 @@ class MainActivity2 : AppCompatActivity() {
                 .addOnSuccessListener { document ->
                     if (document != null) {
                         Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-                        Picasso.get().load("${document.data?.get("img")}").into(imageView)
+                        Picasso.get().load("${document.data?.get("img")}").resize(600,800).into(imageView)
                         textView_name.text = "${document.data?.get("name")}"
                         textView_disc.text = "${document.data?.get("description")}"
                         textView_price.text = "Цена: ${document.data?.get("price")}Р"

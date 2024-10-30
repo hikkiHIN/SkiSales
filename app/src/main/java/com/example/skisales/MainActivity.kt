@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -14,6 +15,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
 import com.squareup.picasso.Picasso
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -28,16 +30,15 @@ class MainActivity : AppCompatActivity() {
         }
 
         val db = Firebase.firestore // init db
-        val layout: LinearLayout = findViewById(R.id.linlay_1)
-        val layout1: LinearLayout = findViewById(R.id.linlay_2)
-        val layout2: LinearLayout = findViewById(R.id.linlay_3)
-        val layout3: LinearLayout = findViewById(R.id.linlay_4)
-        val layout4: LinearLayout = findViewById(R.id.linlay_5)
-        val layout5: LinearLayout = findViewById(R.id.linlay_6)
+        val main_parent_vert_layout: LinearLayout = findViewById(R.id.linlayvert)
         var params = LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.MATCH_PARENT,
             LinearLayout.LayoutParams.MATCH_PARENT,
             1.0f
+        )
+        var params_ll = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT
         )
 
 
@@ -46,17 +47,29 @@ class MainActivity : AppCompatActivity() {
             .addOnSuccessListener { result ->
                 Log.d(TAG,"${result.size()}")
                 var counter = 0
-                var layout_path_img = layout
-                var layout_path_names = layout1
+                var layout_path_img = main_parent_vert_layout //temp value
+                var layout_path_names = main_parent_vert_layout //temp value
                 for (document in result) {
-                    counter++
-                    if (counter > 3) {
-                        layout_path_img = layout2
-                        layout_path_names = layout3
-                        if (counter > 6) {
-                            layout_path_img = layout4
-                            layout_path_names = layout5
-                        }
+                    if (counter == 0 || counter % 3 == 0) {
+
+                        val layout_new_parent_vert = LinearLayout(this)
+                        layout_new_parent_vert.layoutParams = params_ll
+                        layout_new_parent_vert.orientation = LinearLayout.VERTICAL
+                        main_parent_vert_layout.addView(layout_new_parent_vert)
+
+                        val layout_new_hor_images = LinearLayout(this)
+                        layout_new_hor_images.layoutParams = params_ll
+                        layout_new_hor_images.orientation = LinearLayout.HORIZONTAL
+                        layout_new_parent_vert.addView(layout_new_hor_images)
+
+                        val layout_new_hor_names = LinearLayout(this)
+                        layout_new_hor_names.layoutParams = params_ll
+                        layout_new_hor_names.orientation = LinearLayout.HORIZONTAL
+                        layout_new_parent_vert.addView(layout_new_hor_names)
+
+                        layout_path_img = layout_new_hor_images
+                        layout_path_names = layout_new_hor_names
+
                     }
                     Log.d(TAG, "${document.id} => ${document.data}")
                     Log.d(TAG,"${document.data.get("name")}")
@@ -78,11 +91,12 @@ class MainActivity : AppCompatActivity() {
                     textView.textSize = 15f
                     textView.setLayoutParams(params)
                     layout_path_names.addView(textView)
-
+                    counter++
                 }
             }
             .addOnFailureListener { exception ->
                 Log.w(TAG, "Error getting documents.", exception)
+                Toast.makeText(applicationContext, "Произошла ошибка получения данных.", Toast.LENGTH_LONG).show()
             }
 
     }
