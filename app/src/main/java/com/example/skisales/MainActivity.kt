@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        val db = Firebase.firestore // init db
+        val db = Firebase.firestore
         val main_parent_vert_layout: LinearLayout = findViewById(R.id.linlayvert)
         var params = LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.MATCH_PARENT,
@@ -47,8 +47,8 @@ class MainActivity : AppCompatActivity() {
             .addOnSuccessListener { result ->
                 Log.d(TAG,"${result.size()}")
                 var counter = 0
-                var layout_path_img = main_parent_vert_layout //temp value
-                var layout_path_names = main_parent_vert_layout //temp value
+                var layout_path_img = main_parent_vert_layout
+                var layout_path_names = main_parent_vert_layout
                 for (document in result) {
                     if (counter == 0 || counter % 3 == 0) {
 
@@ -71,8 +71,9 @@ class MainActivity : AppCompatActivity() {
                         layout_path_names = layout_new_hor_names
 
                     }
-                    Log.d(TAG, "${document.id} => ${document.data}")
-                    Log.d(TAG,"${document.data.get("name")}")
+                    Log.d(TAG, "${document.id} => ${document.data}") //
+                    Log.d(TAG,"${document.data.get("name")}") //
+
                     val imageView = ImageView(this)
                     Picasso.get().load("${document.data.get("img")}").into(imageView)
                     imageView.adjustViewBounds = true
@@ -95,7 +96,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             .addOnFailureListener { exception ->
-                Log.w(TAG, "Error getting documents.", exception)
+                Log.w(TAG, "Error getting documents.", exception) //
                 Toast.makeText(applicationContext, "Произошла ошибка получения данных.", Toast.LENGTH_LONG).show()
             }
 

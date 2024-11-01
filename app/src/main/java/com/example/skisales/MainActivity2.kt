@@ -43,20 +43,19 @@ class MainActivity2 : AppCompatActivity() {
             docRef.get()
                 .addOnSuccessListener { document ->
                     if (document != null) {
-                        Log.d(TAG, "DocumentSnapshot data: ${document.data}")
+                        Log.d(TAG, "DocumentSnapshot data: ${document.data}") //
                         Picasso.get().load("${document.data?.get("img")}").resize(600,800).into(imageView)
                         textView_name.text = "${document.data?.get("name")}"
                         textView_disc.text = "${document.data?.get("description")}"
                         textView_price.text = "Цена: ${document.data?.get("price")}Р"
                     } else {
-                        Log.d(TAG, "No such document")
+                        Log.d(TAG, "No such document") //
                     }
                 }
                 .addOnFailureListener { exception ->
-                    Log.d(TAG, "get failed with ", exception)
+                    Log.d(TAG, "get failed with ", exception) //
                 }
         }
-
 
         val fab: View = findViewById(R.id.floatingActionButton)
         fab.setOnClickListener { view ->

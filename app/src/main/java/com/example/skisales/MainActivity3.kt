@@ -1,27 +1,19 @@
 package com.example.skisales
 
 import android.content.ContentValues.TAG
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ImageView
 import android.widget.Spinner
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.material3.Button
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.Firebase
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.firestore
-import com.squareup.picasso.Picasso
 
 class MainActivity3 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -84,7 +76,6 @@ class MainActivity3 : AppCompatActivity() {
         }
 
 
-
         val take_order = findViewById<Button>(R.id.button2)
         take_order.setOnClickListener {
                 Log.d("BUTTONS", "User tapped the Supabutton")
@@ -113,34 +104,7 @@ class MainActivity3 : AppCompatActivity() {
                     Toast.makeText(applicationContext, "Произошла ошибка, пожалуйста повторите попытку.", Toast.LENGTH_LONG).show()
                 }
             }
-
-        val docRef = db.collection("options").document("XilNQyhVIacHBp3SV1pw")
-        docRef.get()
-            .addOnSuccessListener { document ->
-                if (document != null) {
-                    Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-                    val cores = document.data?.get("core")
-                    val notch_systems = document.data?.get("notch_system")
-                    val rigidity_level = document.data?.get("rigidity")
-                    val sliding_surfaces = document.data?.get("sliding_surface")
-
-                    //Log.d(TAG, "DocumentSnapshot data: ${cores}")
-                }
-                else
-                {
-                    Log.d(TAG, "No such document")
-                }
-            }
-            .addOnFailureListener { exception ->
-                Log.d(TAG, "get failed with ", exception)
-            }
-
-
-
     }
-
-
-
 }
 
 
