@@ -76,6 +76,7 @@ class MainActivity : AppCompatActivity() {
 
                     val imageView = ImageView(this)
                     Picasso.get().load("${document.data.get("img")}").into(imageView)
+                    imageView.maxHeight = 500
                     imageView.adjustViewBounds = true
                     imageView.setLayoutParams(params)
                     imageView.setOnClickListener(){
