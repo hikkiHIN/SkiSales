@@ -4,6 +4,7 @@ import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -40,6 +41,7 @@ class MainActivity : AppCompatActivity() {
             LinearLayout.LayoutParams.MATCH_PARENT,
             LinearLayout.LayoutParams.WRAP_CONTENT
         )
+
 
 
         db.collection("inv")
@@ -90,6 +92,7 @@ class MainActivity : AppCompatActivity() {
                     layout_path_img.addView(imageView)
                     val textView = TextView(this)
                     textView.text = "${document.data.get("name")}"
+                    textView.setGravity(Gravity.CENTER);
                     textView.textSize = 15f
                     textView.setLayoutParams(params)
                     layout_path_names.addView(textView)

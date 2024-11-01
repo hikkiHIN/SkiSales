@@ -32,7 +32,7 @@
         android:layout_marginTop="5dp"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
-        android:text="Вес пользователя"
+        android:text="@string/user_weight_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
@@ -59,7 +59,7 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:ems="10"
-        android:hint="Вес пользователя"
+        android:hint="@string/user_weight_text"
         android:inputType="number"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
@@ -71,7 +71,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Заказ"
+        android:text="@string/order_text"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -83,7 +83,7 @@
         android:layout_marginTop="10dp"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
-        android:text="Сердечник"
+        android:text="@string/core_text"
         app:layout_constraintTop_toBottomOf="@+id/editTextNumber2"
         tools:layout_editor_absoluteX="0dp" />
 
@@ -94,7 +94,7 @@
         android:layout_marginTop="10dp"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
-        android:text="Жесткость"
+        android:text="@string/rigidity_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
@@ -105,7 +105,7 @@
         android:layout_marginTop="10dp"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
-        android:text="Скользящая поверхность"
+        android:text="@string/sliding_surface_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner1" />
 
@@ -116,7 +116,7 @@
         android:layout_marginTop="10dp"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
-        android:text="Система насечек"
+        android:text="@string/notchsystem_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner2" />
 
@@ -125,7 +125,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Заказать"
+        android:text="@string/order_button_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner3" />
 
