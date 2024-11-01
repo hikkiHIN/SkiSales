@@ -1,5 +1,13 @@
 <resources>
     <string name="app_name">SkiSales</string>
+    <string name="order_text">Заказ</string>
+    <string name="order_button_text">Заказать</string>
+    <string name="user_weight_text">Вес пользователя</string>
+    <string name="core_text">Сердечник</string>
+    <string name="rigidity_text">Жесткость</string>
+    <string name="sliding_surface_text">Скользящая поверхность</string>
+    <string name="notchsystem_text">Система насечек</string>
+
     <string-array name="core">
         <item>Wood core</item>
         <item>Densolite</item>
