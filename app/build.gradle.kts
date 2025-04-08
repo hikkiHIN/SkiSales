@@ -58,4 +58,8 @@ dependencies {
     //hin add picasso
     implementation (libs.picasso)
 
+    //
+    implementation(libs.glide)
+    annotationProcessor(libs.compiler)
+
 }

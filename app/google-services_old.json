@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "98447997994",
-    "project_id": "skisales-3f4c8",
-    "storage_bucket": "skisales-3f4c8.firebasestorage.app"
+    "project_number": "1029275681171",
+    "project_id": "skisalestest",
+    "storage_bucket": "skisalestest.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:98447997994:android:268c5de2a9a68461581753",
+        "mobilesdk_app_id": "1:1029275681171:android:758a9bda39355a1fffe866",
         "android_client_info": {
           "package_name": "com.example.skisales"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDy9u5x0N9hMWrmUJMtySkYbKeetzINnls"
+          "current_key": "AIzaSyCIwH4OLzEOP2UmosQrz1IT4dLjvk9WdfE"
         }
       ],
       "services": {
